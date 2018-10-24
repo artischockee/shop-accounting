@@ -1,6 +1,3 @@
-.App
-  text-align: center
-
 .App-header
   background-color: #282c34
   min-height: 100vh
@@ -10,3 +7,102 @@
   justify-content: center
   font-size: calc(10px + 2vmin)
   color: white
+
+$default-font-size: 16
+
+@function em($pixels)
+  @return ($pixels / $default-font-size) * 1em
+
+.app
+  padding: em(16)
+  width: em(920)
+  // TEMP:
+  background-color: lighten(lightgray, 10%)
+
+
+.header
+  margin-bottom: em(32)
+
+.header__title, .header__control
+  align-items: center
+  display: flex
+
+.header__title
+  justify-content: space-between
+
+.header__control
+  justify-content: flex-start
+
+.header__page-name
+  font-size: em(32)
+  margin: 0
+
+
+
+.logo
+  background-color: lightgray
+  border-radius: em(8)
+  padding: em(18) em(64)
+
+.logo__inscription
+  font-size: em(24)
+  font-style: italic
+  color: gray
+  letter-spacing: em(2)
+  margin: 0
+  text-transform: uppercase
+
+.catalog
+  background-color: olive
+  padding: em(4) em(16)
+
+.catalog__title
+  color: white
+  margin: 0
+
+
+
+
+.main
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  grid-gap: em(16)
+
+.product-card
+  background-color: white
+  border: em(1) solid lighten(black, 50%)
+  display: flex
+  flex-direction: column
+  padding: em(8)
+
+.product-card__category
+  font-size: em(14)
+  margin: 0
+  margin-bottom: em(8)
+
+.product-card__image-placeholder
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 100%
+  height: em(192)
+  background-color: lighten(lightblue, 12%)
+
+  span
+    font-style: italic
+
+.product-card__product-name
+  font-size: em(15)
+  margin: 0
+  margin-top: em(12)
+  text-align: center
+
+.product-card__warehouse-info
+  display: flex
+  justify-content: space-between
+  font-size: em(15)
+  margin: 0
+  margin-top: em(12)
+
+.product-card__items-left
+  font-weight: bold
