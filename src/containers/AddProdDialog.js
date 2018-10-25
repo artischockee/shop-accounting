@@ -7,7 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  dialogClose: () => dispatch(closeAddProdDialog())
+  dialogClose: () => dispatch(closeAddProdDialog()),
+  dispatch
 });
 
 export default connect(
