@@ -1,4 +1,4 @@
-import { Products } from '../actions';
+import { Products, SWITCH_PRODUCT_SETTINGS_MENU } from '../actions';
 
 const initialState = [
   {
@@ -6,56 +6,64 @@ const initialState = [
     category: 'TV',
     img: null,
     name: 'Philips TV Big screen Smart TV and all the stuff',
-    quantity: 113630
+    quantity: 113630,
+    displaySettingsMenu: false
   },
   {
     id: 1,
     category: 'House',
     img: null,
-    name: 'Vacuum cleaner',
-    quantity: 92
+    name: 'Vacuum cleaner HV7000 2200W',
+    quantity: 92,
+    displaySettingsMenu: false
   },
   {
     id: 2,
     category: 'TV',
     img: null,
-    name: 'Samsung TV 116\'',
-    quantity: 2
+    name: 'Samsung TV HX-1345 116\'',
+    quantity: 2,
+    displaySettingsMenu: false
   },
   {
     id: 3,
-    category: 'TV',
+    category: 'Fun',
     img: null,
-    name: 'Philips TV Big screen Smart TV and all the stuff',
-    quantity: 113630
+    name: 'Pink spinner',
+    quantity: 234952,
+    displaySettingsMenu: false
   },
   {
     id: 4,
-    category: 'TV',
+    category: 'Other',
     img: null,
-    name: 'Philips TV Big screen Smart TV and all the stuff',
-    quantity: 113630
+    name: 'Water flask',
+    quantity: 544,
+    displaySettingsMenu: false
   },
   {
     id: 5,
-    category: 'TV',
+    category: 'Internet',
     img: null,
-    name: 'Philips TV Big screen Smart TV and all the stuff',
-    quantity: 113630
+    name: 'PT-Link Wi-Fi Router',
+    quantity: 116,
+    displaySettingsMenu: false
   },
   {
     id: 6,
-    category: 'TV',
+    category: 'Office',
     img: null,
-    name: 'Philips TV Big screen Smart TV and all the stuff',
-    quantity: 113630
+    name: 'Parker Pen',
+    quantity: 978,
+    displaySettingsMenu: false
   },
   {
     id: 7,
     category: 'TV',
     img: null,
-    name: 'Philips TV Big screen Smart TV and all the stuff',
-    quantity: 113630
+    name: 'Philips TV small screen Dumb TV and nothing more',
+    quantity: 5133,
+    displaySettingsMenu: false
   }
 ];
 
@@ -69,9 +77,18 @@ const products = (state = initialState, action) => {
           category: 'Other',
           img: null,
           name: action.name,
-          quantity: action.quantity
+          quantity: action.quantity,
+          displaySettingsMenu: false
         }
       ];
+    case Products.DELETE_PRODUCT:
+      return state.filter((product) => product.id !== action.id);
+    case SWITCH_PRODUCT_SETTINGS_MENU:
+      return state.map((product) =>
+        product.id === action.id
+          ? { ...product, displaySettingsMenu: !product.displaySettingsMenu }
+          : product
+      );
     default:
       return state;
   }
