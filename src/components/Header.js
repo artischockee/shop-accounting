@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Header = (props) => (
+const Header = ({
+  onInputChange,
+  searchValue
+}) => (
   <header className="header">
 
     <section className="header__title">
@@ -16,7 +19,9 @@ const Header = (props) => (
         <p className="catalog__title">Catalog</p>
       </div>
       <div className="search">
-        <input className="search__input" type="text" />
+        <input className="search__input" type="text" placeholder="Search"
+          onChange={onInputChange} value={searchValue}
+        />
       </div>
       <button className="button">Add product</button>
     </section>
@@ -25,7 +30,8 @@ const Header = (props) => (
 );
 
 Header.propTypes = {
-  
+  onInputChange: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired
 };
 
 export default Header;
