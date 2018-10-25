@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { searchValueChange } from '../actions';
+import { openAddProdDialog, searchValueChange } from '../actions';
 import Header from '../components/Header';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -7,6 +7,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  onButtonClick: () => dispatch(openAddProdDialog()),
   onInputChange: (e) => dispatch(searchValueChange(e.target.value))
 });
 
