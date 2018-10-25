@@ -37,22 +37,57 @@
   display: flex
   flex-direction: column
   padding: em(8)
+  position: relative
+
+  &__menu
+    background-color: inherit
+    box-sizing: border-box
+    display: flex
+    flex-direction: column
+    height: 100%
+    left: 0
+    opacity: 0
+    padding: em(8 + 8 + 19) em(8) em(8)
+    position: absolute
+    top: 0
+    transition:
+      delay: 100ms
+      duration: 250ms
+      property: opacity, visibility
+      timing-function: ease-out
+    visibility: hidden
+    width: 100%
+
+    &_visible
+      opacity: 1
+      visibility: visible
+
+  &__top-section
+    display: flex
+    justify-content: space-between
+    margin-bottom: em(8)
+
+    .button
+      color: $c-black-48
+      padding: 0
+      z-index: 9
 
   &__category
     font-size: em(14)
     margin: 0
-    margin-bottom: em(8)
 
-  &__image-placeholder
-    display: flex
+  &__image-container
     align-items: center
-    justify-content: center
-    width: 100%
+    background-color: lighten(lightgray, 10%)
+    display: flex
     height: em(192)
-    background-color: lighten(lightblue, 12%)
+    justify-content: center
+    overflow: hidden
+    width: 100%
 
-    span
-      font-style: italic
+  &__image
+    font-size: em(14)
+    height: inherit
 
   &__product-name
     font-size: em(15)

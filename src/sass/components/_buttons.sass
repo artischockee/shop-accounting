@@ -7,3 +7,25 @@
   font-weight: bold
   outline: none
   padding: em(4) em(12)
+
+  // 'hstyle' means 'style, applied to hovered element'
+
+  &_hstyle_warning
+    transition: background-color 150ms ease-out
+
+    &:hover
+      background-color: lighten(red, 20%)
+
+  &_type_svg
+    align-items: center
+    background-color: transparent
+    border: none
+    color: currentColor
+    display: flex
+    padding: 0 em(8)
+
+  &__svg
+    fill: currentColor
+    height: em(16)
+    pointer-events: none
+    width: em(16)
