@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Header = ({
+  onButtonClick,
   onInputChange,
   searchValue
 }) => (
@@ -23,13 +24,14 @@ const Header = ({
           onChange={onInputChange} value={searchValue}
         />
       </div>
-      <button className="button">Add product</button>
+      <button className="button" onClick={onButtonClick}>Add product</button>
     </section>
 
   </header>
 );
 
 Header.propTypes = {
+  onButtonClick: PropTypes.func.isRequired,
   onInputChange: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired
 };
