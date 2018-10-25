@@ -1,3 +1,18 @@
+@import "helpers/variables"
+@import "helpers/functions"
+
+@import "components/buttons"
+
+.app
+  background-color: white
+  box-sizing: border-box
+  box-shadow: 0 0 em(4) rgba(0, 0, 0, .15)
+  padding: em(24) 0
+  width: em(984)
+
+@import "layout/header"
+
+// NOTE: this style is not used anywhere
 .App-header
   background-color: #282c34
   min-height: 100vh
@@ -8,69 +23,17 @@
   font-size: calc(10px + 2vmin)
   color: white
 
-$default-font-size: 16
-
-@function em($pixels)
-  @return ($pixels / $default-font-size) * 1em
-
-.app
-  padding: em(16)
-  width: em(920)
-  // TEMP:
-  background-color: lighten(lightgray, 10%)
-
-
-.header
-  margin-bottom: em(32)
-
-.header__title, .header__control
-  align-items: center
-  display: flex
-
-.header__title
-  justify-content: space-between
-
-.header__control
-  justify-content: flex-start
-
-.header__page-name
-  font-size: em(32)
-  margin: 0
-
-
-
-.logo
-  background-color: lightgray
-  border-radius: em(8)
-  padding: em(18) em(64)
-
-.logo__inscription
-  font-size: em(24)
-  font-style: italic
-  color: gray
-  letter-spacing: em(2)
-  margin: 0
-  text-transform: uppercase
-
-.catalog
-  background-color: olive
-  padding: em(4) em(16)
-
-.catalog__title
-  color: white
-  margin: 0
-
-
 
 
 .main
   display: grid
   grid-template-columns: repeat(4, 1fr)
   grid-gap: em(16)
+  margin: 0 em(48)
 
 .product-card
   background-color: white
-  border: em(1) solid lighten(black, 50%)
+  border: em(1) solid $c-black-8-a2
   display: flex
   flex-direction: column
   padding: em(8)
@@ -98,8 +61,10 @@ $default-font-size: 16
   text-align: center
 
 .product-card__warehouse-info
+  align-items: flex-end
   display: flex
   justify-content: space-between
+  flex: auto
   font-size: em(15)
   margin: 0
   margin-top: em(12)
