@@ -1,14 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { addProduct } from '../actions';
+import SVGClose from '../svg-components/Close';
 
-const AddProdDialog = (props) => (
-  <div className="fullscreen-wrapper">
-    <div className="add-prod-dialog">
-      <h1>hello world</h1>
-      <button onClick={props.dialogClose}>Close</button>
+const AddProdDialog = ({
+  dialogClose,
+  dispatch
+}) => {
+  let productName;
+  let productQuantity;
+
+  return (
+    <div className="fullscreen-wrapper">
+      <form className="add-prod-dialog"
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          if (
+            !productName.value.trim() ||
+            isNaN(productQuantity.value)
+          ) {
+            return;
+          }
+
+          dispatch(addProduct(productName.value, Number(productQuantity.value)));
+
+          productName.value = '';
+          productQuantity.value = '';
+
+          dialogClose();
+        }}
+      >
+        <div className="add-prod-dialog__title">
+          <p className="title__text">Add a product</p>
+          <button type="button" className="title__button" onClick={dialogClose}>
+            <SVGClose className="button__svg" />
+          </button>
+        </div>
+
+        <div className="add-prod-dialog__body">
+          <div className="body__field">
+            <label className="field__label" htmlFor="name">Product name</label>
+            <input type="text" className="field__input" id="name"
+              ref={node => (productName = node)}
+            />
+          </div>
+          <div className="body__field">
+            <label className="field__label" htmlFor="quantity">Quantity</label>
+            <input type="text" className="field__input field__input_type_number" id="quantity"
+              ref={node => (productQuantity = node)}
+            />
+          </div>
+        </div>
+
+        <div className="add-prod-dialog__controls">
+          <button type="button" className="controls__button" onClick={dialogClose}>Cancel</button>
+          <button type="submit" className="controls__button controls__button_primary">Add</button>
+        </div>
+      </form>
     </div>
-  </div>
-);
+  );
+};
 
 AddProdDialog.propTypes = {
   dialogClose: PropTypes.func.isRequired
