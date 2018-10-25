@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const getReadableQuantity = (quantity) => quantity.toLocaleString();
+
 const ProductCard = ({
   category,
   name,
@@ -13,7 +15,7 @@ const ProductCard = ({
     <p className="product-card__warehouse-info">
       On warehouse:
       <span className="product-card__items-left">
-        {quantity}
+        {getReadableQuantity(quantity)}
       </span>
     </p>
   </div>
@@ -22,7 +24,7 @@ const ProductCard = ({
 ProductCard.propTypes = {
   category: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  quantity: PropTypes.string.isRequired
+  quantity: PropTypes.number.isRequired
 };
 
 export default ProductCard;
