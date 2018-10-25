@@ -38,39 +38,39 @@
   flex-direction: column
   padding: em(8)
 
-.product-card__category
-  font-size: em(14)
-  margin: 0
-  margin-bottom: em(8)
+  &__category
+    font-size: em(14)
+    margin: 0
+    margin-bottom: em(8)
 
-.product-card__image-placeholder
-  display: flex
-  align-items: center
-  justify-content: center
-  width: 100%
-  height: em(192)
-  background-color: lighten(lightblue, 12%)
+  &__image-placeholder
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 100%
+    height: em(192)
+    background-color: lighten(lightblue, 12%)
 
-  span
-    font-style: italic
+    span
+      font-style: italic
 
-.product-card__product-name
-  font-size: em(15)
-  margin: 0
-  margin-top: em(12)
-  text-align: center
+  &__product-name
+    font-size: em(15)
+    margin: 0
+    margin-top: em(12)
+    text-align: center
 
-.product-card__warehouse-info
-  align-items: flex-end
-  display: flex
-  justify-content: space-between
-  flex: auto
-  font-size: em(15)
-  margin: 0
-  margin-top: em(12)
+  &__warehouse-info
+    align-items: flex-end
+    display: flex
+    justify-content: space-between
+    flex: auto
+    font-size: em(15)
+    margin: 0
+    margin-top: em(12)
 
-.product-card__items-left
-  font-weight: bold
+  &__items-left
+    font-weight: bold
 
 
 
@@ -78,17 +78,120 @@
 
 .fullscreen-wrapper
   align-items: center
+  background-color: rgba(0,0,0,.4)
   display: flex
+  height: 100%
   justify-content: center
+  left: 0
   position: fixed
   top: 0
-  left: 0
   width: 100%
-  height: 100%
-  background-color: rgba(0,0,0,.4)
   z-index: 99
 
 .add-prod-dialog
-  width: em(886)
-  // height: em(256)
   background-color: white
+  border-radius: em(4)
+  box-shadow: 0 em(2) em(12) $c-black-8-a2
+  overflow: hidden
+  width: em(512)
+
+  &__title
+    background-color: $c-accent
+    color: $c-black-32
+    display: flex
+    justify-content: space-between
+    padding: em(20) em(16)
+
+  .button__svg
+    fill: currentColor
+    height: 1.25em
+    pointer-events: none
+    width: 1.25em
+
+  .title
+    &__text
+      font-size: em(15)
+      font-weight: bold
+      margin: 0
+
+    &__button
+      align-items: center
+      background-color: transparent
+      border: none
+      color: currentColor
+      cursor: pointer
+      display: flex
+      outline: none
+      padding: 0 em(8)
+
+  &__body
+    color: $c-black-48
+    padding: em(20) em(16)
+
+  .body
+    &__field
+      display: flex
+      flex-direction: column
+      margin-bottom: em(12)
+
+      &:last-of-type
+        margin-bottom: 0
+
+    &__text
+      font-size: em(15)
+      margin: 0
+      margin-bottom: em(8)
+
+      &:last-of-type
+        margin-bottom: 0
+
+    &__span_bold
+      font-weight: 600
+
+  .field
+    &__label
+      font-size: em(15)
+      margin-left: em(4)
+      margin-bottom: em(4)
+
+    &__input
+      border: em(1) solid $c-black-8-a2
+      font-size: em(15)
+      height: em(32)
+      outline: none
+      padding: em(2) em(8)
+
+      &_type_number
+        align-self: flex-start
+
+  &__controls
+    border-top: em(1) solid gray
+    display: flex
+    justify-content: flex-end
+    padding: em(12) em(16)
+
+  .controls__button
+    background-color: darken(white, 10%)
+    border: none
+    border-radius: em(4)
+    cursor: pointer
+    color: $c-black-32
+    font-size: em(14)
+    line-height: 1.75
+    margin-right: em(14)
+    outline: none
+    padding: em(6) em(16)
+    transition: background-color 100ms ease-out
+
+    &:hover
+      background-color: darken(white, 15%)
+
+    &:last-of-type
+      margin-right: 0
+
+    &_primary
+      background-color: $c-accent
+      color: white
+
+      &:hover
+        background-color: darken($c-accent, 5%)
