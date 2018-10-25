@@ -8,6 +8,8 @@ const Main = ({ products }) => (
       <ProductCard
         key={product.id}
         category={product.category}
+        id={product.id}
+        img={product.img}
         name={product.name}
         quantity={product.quantity}
       />
