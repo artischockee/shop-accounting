@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../containers/ProductCard';
 
-const getReadableQuantity = (quantity) => quantity.toLocaleString();
-
 const Main = ({ products }) => (
   <main className="main">
     {products.map((product) => (
@@ -11,7 +9,7 @@ const Main = ({ products }) => (
         key={product.id}
         category={product.category}
         name={product.name}
-        quantity={getReadableQuantity(product.quantity)}
+        quantity={product.quantity}
       />
     ))}
   </main>
