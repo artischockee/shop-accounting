@@ -2,9 +2,12 @@ export const Products = {
   ADD_PRODUCT: 'ADD_PRODUCT'
 };
 
-export const addProduct = (product) => ({
+let productId = 8; // value is 8 because of existing products (see 'reducers/products')
+export const addProduct = (name, quantity) => ({
   type: Products.ADD_PRODUCT,
-  product
+  id: productId++,
+  name,
+  quantity
 });
 
 export const AddProdDialog = {
