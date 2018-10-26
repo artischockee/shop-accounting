@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './index.sass';
 import rootReducer from './reducers';
-import { closeAddProdDialog } from './actions';
+import { closeAllDialogs } from './actions';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 
@@ -17,12 +17,20 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+const isAnyDialogOpened = (dialogsObj) => (
+  Object.values(dialogsObj).some((dialog) => (
+    typeof dialog === 'object'
+      ? Object.values(dialog).some(d => d)
+      : dialog
+  ))
+);
+
 document.addEventListener('keyup', (event) => {
   if (
-    store.getState().showAddProdDialog === true
+    isAnyDialogOpened(store.getState().dialogs)
     && event.key === 'Escape'
   ) {
-    store.dispatch(closeAddProdDialog());
+    store.dispatch(closeAllDialogs());
   }
 });
 
