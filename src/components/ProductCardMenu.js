@@ -14,7 +14,8 @@ const ProductCardMenu = ({
 
 ProductCardMenu.propTypes = {
   className: PropTypes.string.isRequired,
-  deleteProduct: PropTypes.func.isRequired
+  deleteProduct: PropTypes.func.isRequired,
+  showEditProdDialog: PropTypes.func.isRequired
 };
 
 export default ProductCardMenu;
