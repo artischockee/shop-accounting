@@ -10,7 +10,7 @@ const App = ({ showAddProdDialog }) => (
     {showAddProdDialog ? <AddProdDialog /> : null}
 
     <Header />
-    
+
     <Main />
   </div>
 );
