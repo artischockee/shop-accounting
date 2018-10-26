@@ -1,10 +1,10 @@
-import { AddProdDialog } from '../actions';
+import { Dialogs } from '../actions';
 
 const showAddProdDialog = (state = false, action) => {
   switch (action.type) {
-    case AddProdDialog.OPEN:
+    case Dialogs.OPEN:
       return true;
-    case AddProdDialog.CLOSE:
+    case Dialogs.CLOSE:
       return false;
     default:
       return state;
