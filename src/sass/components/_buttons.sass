@@ -7,14 +7,28 @@
   font-weight: bold
   outline: none
   padding: em(4) em(12)
+  transition:
+    duration: 150ms
+    property: background-color, color
+    timing-function: ease-out
 
   // 'hstyle' means 'style, applied to hovered element'
 
-  &_hstyle_warning
-    transition: background-color 150ms ease-out
+  &_hstyle
 
-    &:hover
-      background-color: lighten(red, 20%)
+    &_warning:hover
+      background-color: $c-red-brick
+      color: white
+
+    &_normal:hover
+      background-color: $c-accent
+      color: white
+
+  &_layout_flex
+    align-items: center
+    display: flex
+
+
 
   &_type_svg
     align-items: center
