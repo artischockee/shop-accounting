@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SVGPlus from '../svg-components/Plus';
 
 const Header = ({
   onButtonClick,
@@ -24,7 +25,10 @@ const Header = ({
           onChange={onInputChange} value={searchValue}
         />
       </div>
-      <button className="button" onClick={onButtonClick}>Add product</button>
+      <button className="button button_layout_flex" onClick={onButtonClick}>
+        <SVGPlus className="button__svg" />
+        Add product
+      </button>
     </section>
 
   </header>
