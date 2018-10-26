@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { addProduct } from '../actions';
 import SVGClose from '../svg-components/Close';
 
+// TODO: Add a form validation and show warnings on wrong symbols typed
+
 const AddProdDialog = ({
   dialogClose,
   dispatch
@@ -32,7 +34,7 @@ const AddProdDialog = ({
         }}
       >
         <div className="add-prod-dialog__title">
-          <p className="title__text">Add a product</p>
+          <p className="title__text">Add product</p>
           <button type="button" className="title__button" onClick={dialogClose}>
             <SVGClose className="button__svg" />
           </button>
@@ -63,7 +65,8 @@ const AddProdDialog = ({
 };
 
 AddProdDialog.propTypes = {
-  dialogClose: PropTypes.func.isRequired
+  dialogClose: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 export default AddProdDialog;
