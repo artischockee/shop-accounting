@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 const ProductCardMenu = ({
   className,
-  deleteProduct
+  deleteProduct,
+  showEditProdDialog
 }) => (
   <div className={className}>
-    <button className="button button_hstyle_warning" onClick={deleteProduct}>Delete product</button>
+    <button className="button button_hstyle_warning" onClick={deleteProduct}>Delete</button>
+    <button className="button button_hstyle_normal" onClick={showEditProdDialog}>Edit</button>
   </div>
 );
 
