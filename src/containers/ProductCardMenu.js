@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { deleteProduct } from '../actions';
+import { deleteProduct, openEditProdDialog } from '../actions';
 import ProductCardMenu from '../components/ProductCardMenu';
 
 const getClassName = (isVisible) => {
@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   deleteProduct: () => dispatch(deleteProduct(ownProps.id)),
-  showEditProdDialog: () => {}
+  showEditProdDialog: () => dispatch(openEditProdDialog(ownProps.id))
 });
 
 export default connect(
