@@ -1,12 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const getReadableNumber = (number) => (
-  typeof number === 'string'
-    ? Number(number).toLocaleString()
-    : number.toLocaleString()
-);
-
 const AppMenu = ({
   className,
   totalProductsQuantity,
@@ -14,24 +8,24 @@ const AppMenu = ({
   totalProductsValue
 }) => (
   <section className={className}>
-    <p>
+    <p className="app-menu__paragraph">
       Total quantity of products in stock:
-      <span>
-        {getReadableNumber(totalProductsQuantity)}
+      <span className="app-menu__span">
+        {totalProductsQuantity}
       </span>
     </p>
 
-    <p>
+    <p className="app-menu__paragraph">
       Types of products in stock:
-      <span>
-        {getReadableNumber(totalTypesQuantity)}
+      <span className="app-menu__span">
+        {totalTypesQuantity}
       </span>
     </p>
 
-    <p>
+    <p className="app-menu__paragraph">
       Total products value in stock:
-      <span>
-        {getReadableNumber(totalProductsValue)}
+      <span className="app-menu__span">
+        {totalProductsValue}
       </span>
     </p>
   </section>
@@ -39,9 +33,9 @@ const AppMenu = ({
 
 AppMenu.propTypes = {
   className: PropTypes.string.isRequired,
-  totalProductsQuantity: PropTypes.number.isRequired,
-  totalTypesQuantity: PropTypes.number.isRequired,
-  totalProductsValue: PropTypes.number.isRequired,
+  totalProductsQuantity: PropTypes.string.isRequired,
+  totalTypesQuantity: PropTypes.string.isRequired,
+  totalProductsValue: PropTypes.string.isRequired,
 };
 
 export default AppMenu;
