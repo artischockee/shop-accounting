@@ -7,11 +7,7 @@ const Main = ({ products }) => (
     {products.map((product) => (
       <ProductCard
         key={product.id}
-        category={product.category}
-        id={product.id}
-        img={product.img}
-        name={product.name}
-        quantity={product.quantity}
+        {...product}
       />
     ))}
   </main>
