@@ -74,7 +74,6 @@ const products = (state = initialState, action) => {
         ...state,
         {
           id: action.id,
-          category: 'Other',
           img: null,
           ...action.product
         }
