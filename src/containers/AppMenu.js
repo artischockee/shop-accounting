@@ -27,7 +27,7 @@ const getTotalProductsValue = (products) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  className: getClassName(state.appMenu),
+  className: getClassName(state.displayAppMenu),
   totalProductsQuantity: getTotalProductsQuantity(state.products),
   totalTypesQuantity: getTotalTypesQuantity(state.products),
   totalProductsValue: getTotalProductsValue(state.products)
