@@ -3,18 +3,31 @@ import PropTypes from 'prop-types';
 
 const ProductCardMenu = ({
   className,
-  deleteProduct,
+  showDeleteProdDialog,
   showEditProdDialog
 }) => (
   <div className={className}>
-    <button className="button button_hstyle_warning" onClick={deleteProduct}>Delete</button>
-    <button className="button button_hstyle_normal" onClick={showEditProdDialog}>Edit</button>
+
+    <button
+      className="button button_hstyle_warning"
+      onClick={showDeleteProdDialog}
+    >
+      Delete
+    </button>
+
+    <button
+      className="button button_hstyle_normal"
+      onClick={showEditProdDialog}
+    >
+      Edit
+    </button>
+
   </div>
 );
 
 ProductCardMenu.propTypes = {
   className: PropTypes.string.isRequired,
-  deleteProduct: PropTypes.func.isRequired,
+  showDeleteProdDialog: PropTypes.func.isRequired,
   showEditProdDialog: PropTypes.func.isRequired
 };
 
