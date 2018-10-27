@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import dialogs from './dialogs';
+import displayAppMenu from './displayAppMenu';
+import displayMenuForId from './displayMenuForId';
 import products from './products';
 import searchValue from './searchValue';
-import dialogs from './dialogs';
-import appMenu from './appMenu';
 
 export default combineReducers({
-  appMenu,
+  dialogs,
+  displayAppMenu,
+  displayMenuForId,
   products,
   searchValue,
-  dialogs,
   form: formReducer
 });
