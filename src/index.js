@@ -6,7 +6,6 @@ import './index.sass';
 import rootReducer from './reducers';
 import { closeCurrentDialog } from './actions';
 import App from './containers/App';
-import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer);
 
@@ -33,8 +32,3 @@ document.addEventListener('keyup', (event) => {
     store.dispatch(closeCurrentDialog());
   }
 });
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
