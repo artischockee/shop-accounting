@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCardMenu from '../containers/ProductCardMenu';
-
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2
-});
+import { currencyFormatter } from '../static-data/currencyFormatter';
 
 const getReadableQuantity = (quantity) => quantity.toLocaleString();
-const getReadablePrice = (price) => formatter.format(price);
+const getReadablePrice = (price) => currencyFormatter.format(price);
 
 const ProductCard = ({
   category,
