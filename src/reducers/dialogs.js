@@ -5,6 +5,10 @@ const initialState = {
   showEditProd: {
     show: false,
     id: null
+  },
+  showDeleteProd: {
+    show: false,
+    id: null
   }
 };
 
@@ -21,9 +25,14 @@ const dialogs = (state = initialState, action) => {
           id: action.id
         }
       });
-    case Dialogs.CLOSE_ALL:
-    case Dialogs.CLOSE_ADD:
-    case Dialogs.CLOSE_EDIT:
+    case Dialogs.OPEN_DELETE:
+      return Object.assign({}, state, {
+        showDeleteProd: {
+          show: true,
+          id: action.id
+        }
+      });
+    case Dialogs.CLOSE_CURRENT:
       return initialState;
     default:
       return state;
