@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './index.sass';
 import rootReducer from './reducers';
-import { closeAllDialogs } from './actions';
+import { closeCurrentDialog } from './actions';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 
@@ -30,7 +30,7 @@ document.addEventListener('keyup', (event) => {
     isAnyDialogOpened(store.getState().dialogs)
     && event.key === 'Escape'
   ) {
-    store.dispatch(closeAllDialogs());
+    store.dispatch(closeCurrentDialog());
   }
 });
 
