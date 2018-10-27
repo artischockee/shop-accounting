@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import SVGPlus from '../svg-components/Plus';
 
 const Header = ({
-  handleMenuButtonClick,
   handleAddProductClick,
+  handleMenuButtonClick,
   handleSearchValueChange,
   searchValue
 }) => (
@@ -36,6 +36,7 @@ const Header = ({
 
 Header.propTypes = {
   handleAddProductClick: PropTypes.func.isRequired,
+  handleMenuButtonClick: PropTypes.func.isRequired,
   handleSearchValueChange: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired
 };

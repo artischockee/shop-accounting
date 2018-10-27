@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import AppMenu from '../components/AppMenu';
+import { currencyFormatter } from '../static-data/currencyFormatter';
 
 const getClassName = (isVisible) => {
   let className = 'app-menu';
@@ -13,18 +14,20 @@ const getTotalProductsQuantity = (products) => {
   let initValue = 0;
 
   return products.reduce(
-    (accumulator, currentValue) => (accumulator + currentValue.quantity),
+    (acc, curVal) => (acc + curVal.quantity),
     initValue
-  );
+  ).toLocaleString();
 };
 
-const getTotalTypesQuantity = (products) => products.length;
+const getTotalTypesQuantity = (products) => products.length.toLocaleString();
 
-const getTotalProductsValue = (products) => {
-  return (products.map((prod) => {
-    return prod.quantity * prod.price;
-  })).reduce((acc, curVal) => acc + curVal);
-};
+const getTotalProductsValue = (products) => (
+  currencyFormatter.format(
+    (products.map((product) => (
+      product.quantity * product.price
+    ))).reduce((acc, curVal) => acc + curVal)
+  )
+);
 
 const mapStateToProps = (state, ownProps) => ({
   className: getClassName(state.displayAppMenu),
@@ -33,11 +36,6 @@ const mapStateToProps = (state, ownProps) => ({
   totalProductsValue: getTotalProductsValue(state.products)
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-
-});
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(AppMenu);
