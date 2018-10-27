@@ -9,17 +9,17 @@ const ProductCardMenu = ({
   <div className={className}>
 
     <button
-      className="button button_hstyle_warning"
-      onClick={showDeleteProdDialog}
-    >
-      Delete
-    </button>
-
-    <button
       className="button button_hstyle_normal"
       onClick={showEditProdDialog}
     >
       Edit
+    </button>
+
+    <button
+      className="button button_hstyle_warning"
+      onClick={showDeleteProdDialog}
+    >
+      Delete
     </button>
 
   </div>
