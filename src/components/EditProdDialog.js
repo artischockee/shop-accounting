@@ -7,15 +7,15 @@ import SVGClose from '../svg-components/Close';
 
 const EditProdDialog = ({
   handleSubmit,
-  initialValues,
-  dialogClose
+  handleDialogClose,
+  initialValues
 }) => (
   <div className="fullscreen-wrapper">
     <form className="dialog" onSubmit={handleSubmit}>
 
       <div className="dialog__title">
         <p className="title__text">Edit product</p>
-        <button type="button" className="title__button" onClick={dialogClose}>
+        <button type="button" className="title__button" onClick={handleDialogClose}>
           <SVGClose className="button__svg" />
         </button>
       </div>
@@ -48,7 +48,7 @@ const EditProdDialog = ({
       </div>
 
       <div className="dialog__controls">
-        <button type="button" className="controls__button" onClick={dialogClose}>
+        <button type="button" className="controls__button" onClick={handleDialogClose}>
           Cancel
         </button>
         <button type="submit" className="controls__button controls__button_primary">
@@ -62,13 +62,13 @@ const EditProdDialog = ({
 
 EditProdDialog.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  handleDialogClose: PropTypes.func.isRequired,
   initialValues: PropTypes.shape({
     id: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired
-  }).isRequired,
-  dialogClose: PropTypes.func.isRequired
+  }).isRequired
 };
 
 export default reduxForm({
