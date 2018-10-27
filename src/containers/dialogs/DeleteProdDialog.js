@@ -12,7 +12,7 @@ const DeleteProdDialogContainer = ({
   handleSubmit
 }) => (
   <DeleteProdDialog
-    onSubmit={values => handleSubmit(values)}
+    onSubmit={productData => handleSubmit(productData.id)}
     initialValues={initialValues}
   />
 );
@@ -22,8 +22,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleSubmit: (productData) => {
-    dispatch(deleteProduct(productData.id));
+  handleSubmit: (productId) => {
+    dispatch(deleteProduct(productId));
     dispatch(closeCurrentDialog());
   }
 });
