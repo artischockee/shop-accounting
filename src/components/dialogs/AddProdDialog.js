@@ -3,68 +3,40 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import DialogTitle from '../../containers/dialogs/DialogTitle';
 import DialogControls from '../../containers/dialogs/DialogControls';
-
-/*const validate = values => {
-  const errors = {}
-  if (!values.username) {
-    errors.username = 'Required'
-  } else if (values.username.length > 15) {
-    errors.username = 'Must be 15 characters or less'
-  }
-  if (!values.email) {
-    errors.email = 'Required'
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
-  }
-  if (!values.age) {
-    errors.age = 'Required'
-  } else if (isNaN(Number(values.age))) {
-    errors.age = 'Must be a number'
-  } else if (Number(values.age) < 18) {
-    errors.age = 'Sorry, you must be at least 18 years old'
-  }
-  return errors
-};
-
-const warn = values => {
-  const warnings = {}
-  if (values.age < 19) {
-    warnings.age = 'Hmm, you seem a bit young...'
-  }
-  return warnings
-};*/
-
-// TODO: Add a form validation and show warnings on wrong symbols typed
+import FullscreenWrapper from '../FullscreenWrapper';
+import InputField from '../forms/InputField';
+import SelectField from '../forms/SelectField';
+import { ProductCategories } from '../../static-data/productCategories';
+import { validate } from '../../static-data/validate';
 
 const AddProdDialog = ({ handleSubmit }) => (
-  <div className="fullscreen-wrapper">
+  <FullscreenWrapper>
     <form className="dialog" onSubmit={handleSubmit}>
 
       <DialogTitle text="Add product" />
 
       <div className="dialog__body">
-        <div className="body__field">
-          <label className="field__label" htmlFor="name">Product name</label>
-          <Field
-            className="field__input"
-            component="input"
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Product name"
-          />
-        </div>
-        <div className="body__field">
-          <label className="field__label" htmlFor="quantity">Quantity</label>
-          <Field
-            className="field__input field__input_type_number"
-            component="input"
-            type="text"
-            id="quantity"
-            name="quantity"
-            placeholder="0"
-          />
-        </div>
+
+        <Field name="name" id="name" type="text"
+          component={InputField} label="Product name"
+        />
+
+        <Field name="category" id="category"
+          payload={ProductCategories}
+          component={SelectField} label="Category"
+          containsEmptyOption
+        />
+
+        <Field name="price" id="price" type="text"
+          placeholder="0"
+          component={InputField} label="Price" shouldFitWidth
+        />
+
+        <Field name="quantity" id="quantity" type="text"
+          placeholder="0"
+          component={InputField} label="In stock" shouldFitWidth
+        />
+
       </div>
 
       <DialogControls
@@ -73,7 +45,7 @@ const AddProdDialog = ({ handleSubmit }) => (
       />
 
     </form>
-  </div>
+  </FullscreenWrapper>
 );
 
 AddProdDialog.propTypes = {
@@ -81,5 +53,6 @@ AddProdDialog.propTypes = {
 };
 
 export default reduxForm({
-  form: 'addProduct'
+  form: 'addProduct',
+  validate
 })(AddProdDialog);

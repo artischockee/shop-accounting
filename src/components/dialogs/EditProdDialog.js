@@ -3,43 +3,39 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import DialogTitle from '../../containers/dialogs/DialogTitle';
 import DialogControls from '../../containers/dialogs/DialogControls';
+import FullscreenWrapper from '../FullscreenWrapper';
+import InputField from '../forms/InputField';
+import SelectField from '../forms/SelectField';
+import { ProductCategories } from '../../static-data/productCategories';
+import { validate } from '../../static-data/validate';
 
-// TODO: Add a form validation and show warnings on wrong symbols typed
-
-const EditProdDialog = ({
-  handleSubmit,
-  initialValues
-}) => (
-  <div className="fullscreen-wrapper">
+const EditProdDialog = ({ handleSubmit }) => (
+  <FullscreenWrapper>
     <form className="dialog" onSubmit={handleSubmit}>
 
       <DialogTitle text="Edit product" />
 
       <div className="dialog__body">
-        <div className="body__field">
-          <label className="field__label" htmlFor="name">Product name</label>
-          <Field
-            className="field__input"
-            component="input"
-            type="text"
-            id="name"
-            name="name"
-            value={initialValues.name}
-            placeholder="Product name"
-          />
-        </div>
-        <div className="body__field">
-          <label className="field__label" htmlFor="quantity">Quantity</label>
-          <Field
-            className="field__input field__input_type_number"
-            component="input"
-            type="text"
-            id="quantity"
-            name="quantity"
-            value={initialValues.quantity}
-            placeholder="0"
-          />
-        </div>
+
+        <Field name="name" id="name" type="text"
+          component={InputField} label="Product name"
+        />
+
+        <Field name="category" id="category"
+          payload={ProductCategories}
+          component={SelectField} label="Category"
+        />
+
+        <Field name="price" id="price" type="text"
+          placeholder="0"
+          component={InputField} label="Price" shouldFitWidth
+        />
+
+        <Field name="quantity" id="quantity" type="text"
+          placeholder="0"
+          component={InputField} label="In stock" shouldFitWidth
+        />
+
       </div>
 
       <DialogControls
@@ -48,7 +44,7 @@ const EditProdDialog = ({
       />
 
     </form>
-  </div>
+  </FullscreenWrapper>
 );
 
 EditProdDialog.propTypes = {
@@ -57,10 +53,12 @@ EditProdDialog.propTypes = {
     id: PropTypes.number.isRequired,
     category: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired
+    quantity: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired
   }).isRequired
 };
 
 export default reduxForm({
-  form: 'editProduct'
+  form: 'editProduct',
+  validate
 })(EditProdDialog);
