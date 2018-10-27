@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EditProdDialog from '../components/EditProdDialog';
-import { closeEditProdDialog, editProduct } from '../actions';
+import { closeCurrentDialog, editProduct } from '../actions';
 
 const getProductById = (products, id) => (
   products.find((product) => product.id === id)
@@ -10,25 +10,24 @@ const getProductById = (products, id) => (
 const EditProdDialogContainer = ({
   initialValues,
   handleSubmit,
-  dialogClose,
-  values
+  handleDialogClose
 }) => (
   <EditProdDialog
     onSubmit={values => handleSubmit(values)}
     initialValues={initialValues}
-    dialogClose={dialogClose}
+    handleDialogClose={handleDialogClose}
   />
 );
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   initialValues: getProductById(state.products, state.dialogs.showEditProd.id)
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  dialogClose: () => dispatch(closeEditProdDialog()),
+const mapDispatchToProps = (dispatch) => ({
+  handleDialogClose: () => dispatch(closeCurrentDialog()),
   handleSubmit: (productData) => {
     dispatch(editProduct(productData));
-    dispatch(closeEditProdDialog());
+    dispatch(closeCurrentDialog());
   }
 });
 
