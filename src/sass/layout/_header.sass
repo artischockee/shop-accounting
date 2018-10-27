@@ -1,5 +1,7 @@
 .header
-  margin-bottom: em(32)
+  background-color: white
+  position: relative
+  z-index: 100
 
   &__title
     align-items: center
@@ -13,6 +15,12 @@
     display: flex
     justify-content: flex-start
     padding: em(8) em(48)
+
+    .button
+      margin-right: em(16)
+
+      &:last-of-type
+        margin-right: 0
 
     .button__svg
       margin-right: em(8)
@@ -32,15 +40,6 @@
     letter-spacing: em(1)
     margin: 0
     text-transform: lowercase
-
-.catalog
-  background-color: white
-  padding: em(4) em(16)
-  margin-right: em(16)
-
-  &__title
-    color: $c-black-32
-    margin: 0
 
 .search
   border: em(1) solid $c-black-8-a2
