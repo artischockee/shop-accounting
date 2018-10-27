@@ -4,13 +4,10 @@ import ProductCard from '../components/ProductCard';
 
 const getResult = (products, ownId) => (
   products.find((prod) => prod.id === ownId).displaySettingsMenu
-    ? true
-    : false
 );
 
 const mapStateToProps = (state, ownProps) => ({
-  displaySettingsMenu: getResult(state.products, ownProps.id),
-  id: ownProps.id
+  isSettingsMenuVisible: getResult(state.products, ownProps.id)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
