@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Header from '../containers/Header';
 import AppMenu from '../containers/AppMenu';
 import Main from '../containers/Main';
-import AddProdDialog from '../containers/AddProdDialog';
-import EditProdDialog from '../containers/EditProdDialog';
-import DeleteProdDialog from '../containers/DeleteProdDialog';
+import AddProdDialog from '../containers/dialogs/AddProdDialog';
+import EditProdDialog from '../containers/dialogs/EditProdDialog';
+import DeleteProdDialog from '../containers/dialogs/DeleteProdDialog';
 
 const App = ({
   showAddProdDialog,
