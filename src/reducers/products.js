@@ -1,4 +1,4 @@
-import { Products, SWITCH_PRODUCT_SETTINGS_MENU } from '../actions';
+import { Products } from '../actions';
 
 const initialState = [
   {
@@ -7,8 +7,7 @@ const initialState = [
     img: null,
     name: 'Philips TV Big screen Smart TV and all the stuff',
     quantity: 113630,
-    price: 1000,
-    displaySettingsMenu: false
+    price: 1000
   },
   {
     id: 1,
@@ -16,8 +15,7 @@ const initialState = [
     img: null,
     name: 'Vacuum cleaner HV7000 2200W',
     quantity: 92,
-    price: 250,
-    displaySettingsMenu: false
+    price: 250
   },
   {
     id: 2,
@@ -25,8 +23,7 @@ const initialState = [
     img: null,
     name: 'Samsung TV HX-1345 116\'',
     quantity: 2,
-    price: 900,
-    displaySettingsMenu: false
+    price: 900
   },
   {
     id: 3,
@@ -34,8 +31,7 @@ const initialState = [
     img: null,
     name: 'Pink spinner',
     quantity: 234952,
-    price: 4,
-    displaySettingsMenu: false
+    price: 4
   },
   {
     id: 4,
@@ -43,8 +39,7 @@ const initialState = [
     img: null,
     name: 'Water flask',
     quantity: 544,
-    price: 2,
-    displaySettingsMenu: false
+    price: 2
   },
   {
     id: 5,
@@ -52,8 +47,7 @@ const initialState = [
     img: null,
     name: 'PT-Link Wi-Fi Router',
     quantity: 116,
-    price: 20,
-    displaySettingsMenu: false
+    price: 20
   },
   {
     id: 6,
@@ -61,8 +55,7 @@ const initialState = [
     img: null,
     name: 'Parker Pen',
     quantity: 978,
-    price: 8.5,
-    displaySettingsMenu: false
+    price: 8.5
   },
   {
     id: 7,
@@ -70,8 +63,7 @@ const initialState = [
     img: null,
     name: 'Philips TV small screen Dumb TV and nothing more',
     quantity: 5133,
-    price: 500,
-    displaySettingsMenu: false
+    price: 500
   }
 ];
 
@@ -84,7 +76,6 @@ const products = (state = initialState, action) => {
           id: action.id,
           category: 'Other',
           img: null,
-          displaySettingsMenu: false,
           ...action.product
         }
       ];
@@ -95,17 +86,7 @@ const products = (state = initialState, action) => {
         product.id === action.product.id
           ? {
               ...action.product,
-              quantity: Number(action.product.quantity),
-              displaySettingsMenu: !action.product.displaySettingsMenu
-            }
-          : product
-      );
-    case SWITCH_PRODUCT_SETTINGS_MENU:
-      return state.map((product) =>
-        product.id === action.id
-          ? {
-              ...product,
-              displaySettingsMenu: !product.displaySettingsMenu
+              quantity: Number(action.product.quantity)
             }
           : product
       );
