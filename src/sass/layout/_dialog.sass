@@ -42,18 +42,30 @@
     &__field
       display: flex
       flex-direction: column
-      margin-bottom: em(12)
+      margin-bottom: em(16)
 
       &:last-of-type
         margin-bottom: 0
 
-    &__text
+    &__text, &__list
       font-size: em(15)
       margin: 0
       margin-bottom: em(8)
 
-      &:last-of-type
+      &:last-child
         margin-bottom: 0
+
+    &__list
+      padding-left: em(16)
+
+    &__list-item
+      list-style: none
+
+    &__list-span
+      font-weight: bold
+
+      &::before
+        content: '\00a0'
 
     &__span_bold
       font-weight: 600
@@ -77,8 +89,14 @@
       &:focus
         border-color: darken($c-accent, 10%)
 
-      &_type_number
+      &_width_short
         align-self: flex-start
+
+    &__error-span
+      color: $c-red-brick
+      font-size: em(14)
+      font-weight: bold
+      margin: em(4) 0 0 em(4)
 
   &__controls
     border-top: em(1) solid $c-black-8-a2
