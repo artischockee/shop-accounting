@@ -6,14 +6,14 @@ import {
 } from '../actions';
 import Header from '../components/Header';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   searchValue: state.searchValue
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleMenuButtonClick: () => dispatch(switchAppMenu()),
-  onButtonClick: () => dispatch(openAddProdDialog()),
-  onInputChange: (e) => dispatch(searchValueChange(e.target.value))
+  handleAddProductClick: () => dispatch(openAddProdDialog()),
+  handleSearchValueChange: (e) => dispatch(searchValueChange(e.target.value))
 });
 
 export default connect(
