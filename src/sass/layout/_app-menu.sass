@@ -2,8 +2,6 @@
   background-color: white
   border-bottom: em(2) solid $c-black-8-a2
   box-sizing: border-box
-  // display: flex
-  // flex-direction: column
   padding: em(8) em(48)
   position: absolute
   transform: translateY(-100%)
@@ -19,3 +17,12 @@
   &_visible
     transform: translateY(0)
     visibility: visible
+
+  &__paragraph
+    font-size: em(15)
+
+  &__span
+    font-weight: bold
+
+    &::before
+      content: '\00a0'
