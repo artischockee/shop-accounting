@@ -7,6 +7,7 @@ const initialState = [
     img: null,
     name: 'Philips TV Big screen Smart TV and all the stuff',
     quantity: 113630,
+    price: 1000,
     displaySettingsMenu: false
   },
   {
@@ -15,6 +16,7 @@ const initialState = [
     img: null,
     name: 'Vacuum cleaner HV7000 2200W',
     quantity: 92,
+    price: 250,
     displaySettingsMenu: false
   },
   {
@@ -23,6 +25,7 @@ const initialState = [
     img: null,
     name: 'Samsung TV HX-1345 116\'',
     quantity: 2,
+    price: 900,
     displaySettingsMenu: false
   },
   {
@@ -31,6 +34,7 @@ const initialState = [
     img: null,
     name: 'Pink spinner',
     quantity: 234952,
+    price: 4,
     displaySettingsMenu: false
   },
   {
@@ -39,6 +43,7 @@ const initialState = [
     img: null,
     name: 'Water flask',
     quantity: 544,
+    price: 2,
     displaySettingsMenu: false
   },
   {
@@ -47,6 +52,7 @@ const initialState = [
     img: null,
     name: 'PT-Link Wi-Fi Router',
     quantity: 116,
+    price: 20,
     displaySettingsMenu: false
   },
   {
@@ -55,6 +61,7 @@ const initialState = [
     img: null,
     name: 'Parker Pen',
     quantity: 978,
+    price: 8.5,
     displaySettingsMenu: false
   },
   {
@@ -63,6 +70,7 @@ const initialState = [
     img: null,
     name: 'Philips TV small screen Dumb TV and nothing more',
     quantity: 5133,
+    price: 500,
     displaySettingsMenu: false
   }
 ];
@@ -76,9 +84,8 @@ const products = (state = initialState, action) => {
           id: action.id,
           category: 'Other',
           img: null,
-          name: action.name,
-          quantity: action.quantity,
-          displaySettingsMenu: false
+          displaySettingsMenu: false,
+          ...action.product
         }
       ];
     case Products.DELETE_PRODUCT:
@@ -96,7 +103,10 @@ const products = (state = initialState, action) => {
     case SWITCH_PRODUCT_SETTINGS_MENU:
       return state.map((product) =>
         product.id === action.id
-          ? { ...product, displaySettingsMenu: !product.displaySettingsMenu }
+          ? {
+              ...product,
+              displaySettingsMenu: !product.displaySettingsMenu
+            }
           : product
       );
     default:
