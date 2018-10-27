@@ -1,17 +1,27 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import AddProdDialog from '../components/AddProdDialog';
-import { closeAddProdDialog } from '../actions';
+import { closeCurrentDialog, addProduct } from '../actions';
 
-const mapStateToProps = (state, ownProps) => ({
+const AddProdDialogContainer = ({
+  handleSubmit,
+  handleDialogClose
+}) => (
+  <AddProdDialog
+    onSubmit={values => handleSubmit(values)}
+    handleDialogClose={handleDialogClose}
+  />
+);
 
-});
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  dialogClose: () => dispatch(closeAddProdDialog()),
-  dispatch
+const mapDispatchToProps = (dispatch) => ({
+  handleDialogClose: () => dispatch(closeCurrentDialog()),
+  handleSubmit: (productData) => {
+    dispatch(addProduct(productData));
+    dispatch(closeCurrentDialog());
+  }
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
-)(AddProdDialog);
+)(AddProdDialogContainer);
