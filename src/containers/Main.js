@@ -18,11 +18,4 @@ const mapStateToProps = (state, ownProps) => ({
   products: getProductsBySearchValue(state.products, state.searchValue)
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Main);
+export default connect(mapStateToProps)(Main);
