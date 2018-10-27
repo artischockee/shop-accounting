@@ -9,8 +9,13 @@ export const searchValueChange = (value) => ({
 });
 
 export const SWITCH_PRODUCT_SETTINGS_MENU = 'SWITCH_PRODUCT_SETTINGS_MENU';
+export const SWITCH_APP_MENU = 'SWITCH_APP_MENU';
 
 export const switchSettingsMenu = (productId) => ({
   type: SWITCH_PRODUCT_SETTINGS_MENU,
   id: productId
+});
+
+export const switchAppMenu = () => ({
+  type: SWITCH_APP_MENU
 });
