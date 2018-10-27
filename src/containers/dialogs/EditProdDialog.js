@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import EditProdDialog from '../../components/dialogs/EditProdDialog';
 import { closeCurrentDialog, editProduct } from '../../actions';
-
-const getProductById = (products, id) => (
-  products.find((product) => product.id === id)
-);
+import { getProductById } from '../../static-data/getProductById';
 
 const EditProdDialogContainer = ({
   initialValues,

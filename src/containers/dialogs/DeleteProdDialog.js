@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DeleteProdDialog from '../../components/dialogs/DeleteProdDialog';
 import { closeCurrentDialog, deleteProduct } from '../../actions';
-
-const getProductById = (products, id) => (
-  products.find((product) => product.id === id)
-);
+import { getProductById } from '../../static-data/getProductById';
 
 const DeleteProdDialogContainer = ({
   initialValues,
