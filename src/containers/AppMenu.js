@@ -9,7 +9,7 @@ const getClassName = (isVisible) => {
     : className
 };
 
-const getTotalAmount = (products) => {
+const getTotalProductsQuantity = (products) => {
   let initValue = 0;
 
   return products.reduce(
@@ -18,9 +18,19 @@ const getTotalAmount = (products) => {
   );
 };
 
+const getTotalTypesQuantity = (products) => products.length;
+
+const getTotalProductsValue = (products) => {
+  return (products.map((prod) => {
+    return prod.quantity * prod.price;
+  })).reduce((acc, curVal) => acc + curVal);
+};
+
 const mapStateToProps = (state, ownProps) => ({
   className: getClassName(state.appMenu),
-  totalAmount: getTotalAmount(state.products)
+  totalProductsQuantity: getTotalProductsQuantity(state.products),
+  totalTypesQuantity: getTotalTypesQuantity(state.products),
+  totalProductsValue: getTotalProductsValue(state.products)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
