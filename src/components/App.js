@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Header from '../containers/Header';
+import AppMenu from '../containers/AppMenu';
 import Main from '../containers/Main';
 import AddProdDialog from '../containers/AddProdDialog';
 import EditProdDialog from '../containers/EditProdDialog';
@@ -15,7 +16,7 @@ const App = ({
     {showEditProdDialog ? <EditProdDialog /> : null}
 
     <Header />
-
+    <AppMenu />
     <Main />
   </div>
 );
