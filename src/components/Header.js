@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SVGPlus from '../svg-components/Plus';
 
 const Header = ({
+  handleMenuButtonClick,
   onButtonClick,
   onInputChange,
   searchValue
@@ -17,9 +18,9 @@ const Header = ({
     </section>
 
     <section className="header__control">
-      <div className="catalog">
-        <p className="catalog__title">Catalog</p>
-      </div>
+      <button className="button" onClick={handleMenuButtonClick}>
+        Menu
+      </button>
       <div className="search">
         <input className="search__input" type="text" placeholder="Search"
           onChange={onInputChange} value={searchValue}
@@ -30,7 +31,6 @@ const Header = ({
         Add product
       </button>
     </section>
-
   </header>
 );
 
