@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SVGCogwheel from '../svg-components/Cogwheel';
 import ProductCardMenu from '../containers/ProductCardMenu';
 
 const formatter = new Intl.NumberFormat('en-US', {
@@ -19,27 +18,27 @@ const ProductCard = ({
   img,
   id,
   price,
-  switchSettingsMenu,
-  isSettingsMenuVisible
+  isSettingsMenuVisible,
+  hideProductCardMenu,
+  showProductCardMenu
 }) => (
-  <div className="product-card">
+  <div className="product-card"
+    onMouseEnter={showProductCardMenu}
+    onMouseLeave={hideProductCardMenu}
+  >
 
     <div className="product-card__top-section">
       <p className="product-card__category">{category}</p>
-      <button className="button button_type_svg" onClick={switchSettingsMenu}>
-        <SVGCogwheel className="button__svg" />
-      </button>
     </div>
 
-    <ProductCardMenu visible={isSettingsMenuVisible} id={id} />
-
     <div className="product-card__image-container">
+      <ProductCardMenu visible={isSettingsMenuVisible} id={id} />
       {/* <img className="product-card__image" src={img} alt={name} /> */}
     </div>
 
     <p className="product-card__product-name">{name}</p>
 
-    <div className="product-card__bottom-info-wrapper">
+    <div className="product-card__bottom-section">
 
       <p className="info-block">
         Price:
@@ -67,7 +66,8 @@ ProductCard.propTypes = {
   img: PropTypes.string,
   id: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
-  switchSettingsMenu: PropTypes.func.isRequired,
+  hideProductCardMenu: PropTypes.func.isRequired,
+  showProductCardMenu: PropTypes.func.isRequired,
   isSettingsMenuVisible: PropTypes.bool.isRequired
 };
 
