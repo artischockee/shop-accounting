@@ -9,16 +9,18 @@
   box-sizing: border-box
   box-shadow: 0 0 em(4) rgba(0, 0, 0, .15)
   padding: em(24) 0
+  position: relative
   width: em(984)
 
 @import "layout/header"
+@import "layout/app-menu"
 @import "layout/dialog"
 
 .main
   display: grid
   grid-template-columns: repeat(4, 1fr)
   grid-gap: em(16)
-  margin: 0 em(48)
+  margin: em(32) em(48) 0
 
 .fullscreen-wrapper
   align-items: center
