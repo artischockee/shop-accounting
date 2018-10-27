@@ -1,0 +1,21 @@
+.app-menu
+  background-color: white
+  border-bottom: em(2) solid $c-black-8-a2
+  box-sizing: border-box
+  // display: flex
+  // flex-direction: column
+  padding: em(8) em(48)
+  position: absolute
+  transform: translateY(-100%)
+  transition:
+    delay: 100ms
+    duration: 250ms
+    property: transform, visibility
+    timing-function: ease-out
+  visibility: hidden
+  width: 100%
+  z-index: 99
+
+  &_visible
+    transform: translateY(0)
+    visibility: visible
