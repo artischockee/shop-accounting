@@ -14,7 +14,7 @@ const AddProdDialog = ({
 
   return (
     <div className="fullscreen-wrapper">
-      <form className="add-prod-dialog"
+      <form className="dialog"
         onSubmit={(e) => {
           e.preventDefault();
 
@@ -33,29 +33,31 @@ const AddProdDialog = ({
           dialogClose();
         }}
       >
-        <div className="add-prod-dialog__title">
+        <div className="dialog__title">
           <p className="title__text">Add product</p>
           <button type="button" className="title__button" onClick={dialogClose}>
             <SVGClose className="button__svg" />
           </button>
         </div>
 
-        <div className="add-prod-dialog__body">
+        <div className="dialog__body">
           <div className="body__field">
             <label className="field__label" htmlFor="name">Product name</label>
             <input type="text" className="field__input" id="name"
+              placeholder="Product name"
               ref={node => (productName = node)}
             />
           </div>
           <div className="body__field">
             <label className="field__label" htmlFor="quantity">Quantity</label>
             <input type="text" className="field__input field__input_type_number" id="quantity"
+              placeholder="0"
               ref={node => (productQuantity = node)}
             />
           </div>
         </div>
 
-        <div className="add-prod-dialog__controls">
+        <div className="dialog__controls">
           <button type="button" className="controls__button" onClick={dialogClose}>Cancel</button>
           <button type="submit" className="controls__button controls__button_primary">Add</button>
         </div>
