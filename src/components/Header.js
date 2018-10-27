@@ -4,8 +4,8 @@ import SVGPlus from '../svg-components/Plus';
 
 const Header = ({
   handleMenuButtonClick,
-  onButtonClick,
-  onInputChange,
+  handleAddProductClick,
+  handleSearchValueChange,
   searchValue
 }) => (
   <header className="header">
@@ -23,10 +23,10 @@ const Header = ({
       </button>
       <div className="search">
         <input className="search__input" type="text" placeholder="Search"
-          onChange={onInputChange} value={searchValue}
+          onChange={handleSearchValueChange} value={searchValue}
         />
       </div>
-      <button className="button button_layout_flex" onClick={onButtonClick}>
+      <button className="button button_layout_flex" onClick={handleAddProductClick}>
         <SVGPlus className="button__svg" />
         Add product
       </button>
@@ -35,8 +35,8 @@ const Header = ({
 );
 
 Header.propTypes = {
-  onButtonClick: PropTypes.func.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  handleAddProductClick: PropTypes.func.isRequired,
+  handleSearchValueChange: PropTypes.func.isRequired,
   searchValue: PropTypes.string.isRequired
 };
 
