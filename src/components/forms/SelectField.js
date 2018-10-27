@@ -31,7 +31,10 @@ SelectField.propTypes = {
   }).isRequired,
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  payload: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  touched: PropTypes.bool,
+  error: PropTypes.bool,
+  containsEmptyOption: PropTypes.bool,
+  payload: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 export default SelectField;
