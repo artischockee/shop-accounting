@@ -5,11 +5,10 @@ export const Products = {
 };
 
 let productId = 8; // value is 8 because of existing products (see 'reducers/products')
-export const addProduct = (name, quantity) => ({
+export const addProduct = (product) => ({
   type: Products.ADD_PRODUCT,
   id: productId++,
-  name,
-  quantity
+  product
 });
 
 export const deleteProduct = (id) => ({
