@@ -12,7 +12,10 @@ const EditProdDialogContainer = ({
   handleSubmit
 }) => (
   <EditProdDialog
-    onSubmit={values => handleSubmit(values)}
+    onSubmit={productData => handleSubmit(Object.assign({}, productData, {
+      quantity: Number(productData.quantity),
+      price: Number(productData.price)
+    }))}
     initialValues={initialValues}
   />
 );

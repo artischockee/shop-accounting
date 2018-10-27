@@ -5,7 +5,12 @@ import { closeCurrentDialog, addProduct } from '../../actions';
 
 const AddProdDialogContainer = ({ handleSubmit }) => (
   <AddProdDialog
-    onSubmit={values => handleSubmit(values)}
+    onSubmit={productData => {
+      handleSubmit(Object.assign({}, productData, {
+        quantity: Number(productData.quantity),
+        price: Number(productData.price)
+      }));
+    }}
   />
 );
 
