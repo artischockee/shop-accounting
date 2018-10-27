@@ -1,22 +1,38 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import EditProdDialog from '../components/EditProdDialog';
-import { closeEditProdDialog } from '../actions';
+import { closeEditProdDialog, editProduct } from '../actions';
 
-const getProductById = (products, id) => {
-  return products.find((product) => product.id === id);
-};
+const getProductById = (products, id) => (
+  products.find((product) => product.id === id)
+);
+
+const EditProdDialogContainer = ({
+  initialValues,
+  handleSubmit,
+  dialogClose,
+  values
+}) => (
+  <EditProdDialog
+    onSubmit={values => handleSubmit(values)}
+    initialValues={initialValues}
+    dialogClose={dialogClose}
+  />
+);
 
 const mapStateToProps = (state, ownProps) => ({
-  id: state.dialogs.showEditProd.id,
-  product: getProductById(state.products, state.dialogs.showEditProd.id)
+  initialValues: getProductById(state.products, state.dialogs.showEditProd.id)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   dialogClose: () => dispatch(closeEditProdDialog()),
-  dispatch
+  handleSubmit: (productData) => {
+    dispatch(editProduct(productData));
+    dispatch(closeEditProdDialog());
+  }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditProdDialog);
+)(EditProdDialogContainer);
