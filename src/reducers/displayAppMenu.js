@@ -1,6 +1,6 @@
 import { SWITCH_APP_MENU } from '../actions';
 
-const appMenu = (state = false, action) => {
+const displayAppMenu = (state = false, action) => {
   switch (action.type) {
     case SWITCH_APP_MENU:
       return !state;
@@ -9,4 +9,4 @@ const appMenu = (state = false, action) => {
   }
 };
 
-export default appMenu;
+export default displayAppMenu;
