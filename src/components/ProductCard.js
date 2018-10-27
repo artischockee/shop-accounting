@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import SVGCogwheel from '../svg-components/Cogwheel';
 import ProductCardMenu from '../containers/ProductCardMenu';
 
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2
+});
+
 const getReadableQuantity = (quantity) => quantity.toLocaleString();
+const getReadablePrice = (price) => formatter.format(price);
 
 const ProductCard = ({
   category,
@@ -11,8 +18,9 @@ const ProductCard = ({
   quantity,
   img,
   id,
+  price,
   switchSettingsMenu,
-  displaySettingsMenu
+  isSettingsMenuVisible
 }) => (
   <div className="product-card">
 
@@ -23,7 +31,7 @@ const ProductCard = ({
       </button>
     </div>
 
-    <ProductCardMenu visible={displaySettingsMenu} id={id} />
+    <ProductCardMenu visible={isSettingsMenuVisible} id={id} />
 
     <div className="product-card__image-container">
       {/* <img className="product-card__image" src={img} alt={name} /> */}
@@ -31,12 +39,23 @@ const ProductCard = ({
 
     <p className="product-card__product-name">{name}</p>
 
-    <p className="product-card__warehouse-info">
-      On warehouse:
-      <span className="product-card__items-left">
-        {getReadableQuantity(quantity)}
-      </span>
-    </p>
+    <div className="product-card__bottom-info-wrapper">
+
+      <p className="info-block">
+        Price:
+        <span className="info-block__data">
+          {getReadablePrice(price)}
+        </span>
+      </p>
+
+      <p className="info-block">
+        In stock:
+        <span className="info-block__data">
+          {getReadableQuantity(quantity)}
+        </span>
+      </p>
+
+    </div>
 
   </div>
 );
@@ -47,8 +66,9 @@ ProductCard.propTypes = {
   quantity: PropTypes.number.isRequired,
   img: PropTypes.string,
   id: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
   switchSettingsMenu: PropTypes.func.isRequired,
-  displaySettingsMenu: PropTypes.bool.isRequired
+  isSettingsMenuVisible: PropTypes.bool.isRequired
 };
 
 export default ProductCard;
