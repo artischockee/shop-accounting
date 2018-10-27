@@ -83,6 +83,16 @@ const products = (state = initialState, action) => {
       ];
     case Products.DELETE_PRODUCT:
       return state.filter((product) => product.id !== action.id);
+    case Products.EDIT_PRODUCT:
+      return state.map((product) =>
+        product.id === action.product.id
+          ? {
+              ...action.product,
+              quantity: Number(action.product.quantity),
+              displaySettingsMenu: !action.product.displaySettingsMenu
+            }
+          : product
+      );
     case SWITCH_PRODUCT_SETTINGS_MENU:
       return state.map((product) =>
         product.id === action.id
