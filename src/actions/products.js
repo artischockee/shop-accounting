@@ -20,3 +20,9 @@ export const editProduct = (product) => ({
   type: Products.EDIT_PRODUCT,
   product
 });
+
+export const addAsyncLoadedImage = (productId, imgUrl) => ({
+  type: 'ADD_ASYNC_IMG_PRODUCT',
+  productId,
+  imgUrl
+})
