@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import AppMenu from '../components/AppMenu';
-import { currencyFormatter } from '../static-data/currencyFormatter';
+import {
+  getReadablePrice,
+  getReadableQuantity
+} from '../static-data/getReadableData';
 
 const getClassName = (isVisible) => {
   let className = 'app-menu';
@@ -13,26 +16,24 @@ const getClassName = (isVisible) => {
 const getTotalProductsQuantity = (products) => {
   let initValue = 0;
 
-  return products.reduce(
-    (acc, curVal) => (acc + curVal.quantity),
-    initValue
-  ).toLocaleString();
+  return getReadableQuantity(
+    products.reduce(
+      (acc, curVal) => (acc + curVal.quantity),
+      initValue
+    )
+  );
 };
 
-const getTotalTypesQuantity = (products) => products.length.toLocaleString();
-
-const getTotalProductsValue = (products) => (
-  currencyFormatter.format(
-    (products.map((product) => (
-      product.quantity * product.price
-    ))).reduce((acc, curVal) => acc + curVal)
-  )
+const getTotalProductsValue = (products) => getReadablePrice(
+  (products.map((product) => (
+    product.quantity * product.price
+  ))).reduce((acc, curVal) => acc + curVal)
 );
 
 const mapStateToProps = (state, ownProps) => ({
   className: getClassName(state.displayAppMenu),
   totalProductsQuantity: getTotalProductsQuantity(state.products),
-  totalTypesQuantity: getTotalTypesQuantity(state.products),
+  totalTypesQuantity: getReadableQuantity(state.products.length),
   totalProductsValue: getTotalProductsValue(state.products)
 });
 
