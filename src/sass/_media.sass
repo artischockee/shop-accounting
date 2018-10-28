@@ -1,0 +1,40 @@
+@media only screen and (max-width: 1024px)
+  .app
+    box-shadow: none
+    width: 100%
+
+  .main
+    grid-template-columns: repeat(3, 1fr)
+
+@media only screen and (max-width: 780px)
+  .main
+    grid-template-columns: repeat(2, 1fr)
+
+@media only screen and (max-width: 548px)
+  .main
+    grid-template-columns: 1fr
+
+@media only screen and (max-width: 480px)
+  .header
+
+    &__title, &__control
+      flex-direction: column
+
+    &__control
+      padding: em(24) em(48)
+
+      .button, .search
+        height: em(48)
+        margin-right: 0
+        margin-bottom: em(16)
+
+      .button
+
+        &:last-of-type
+          margin-bottom: 0
+
+        &_layout_flex
+          justify-content: center
+
+  .logo
+    margin-bottom: em(16)
