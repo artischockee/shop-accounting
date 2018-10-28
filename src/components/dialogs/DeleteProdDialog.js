@@ -4,6 +4,10 @@ import { reduxForm } from 'redux-form';
 import DialogTitle from '../../containers/dialogs/DialogTitle';
 import DialogControls from '../../containers/dialogs/DialogControls';
 import FullscreenWrapper from '../FullscreenWrapper';
+import {
+  getReadableQuantity,
+  getReadablePrice
+} from '../../static-data/getReadableData';
 
 const DeleteProdDialog = ({
   handleSubmit,
@@ -34,13 +38,13 @@ const DeleteProdDialog = ({
           <li className="body__list-item">
             Price:
             <span className="body__list-span">
-              {initialValues.price}
+              {getReadablePrice(initialValues.price)}
             </span>
           </li>
           <li className="body__list-item">
             In stock:
             <span className="body__list-span">
-              {initialValues.quantity}
+              {getReadableQuantity(initialValues.quantity)}
             </span>
           </li>
         </ul>
