@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCardMenu from '../containers/ProductCardMenu';
-import { currencyFormatter } from '../static-data/currencyFormatter';
-
-const getReadableQuantity = (quantity) => quantity.toLocaleString();
-const getReadablePrice = (price) => currencyFormatter.format(price);
+import {
+  getReadableQuantity,
+  getReadablePrice
+} from '../static-data/getReadableData';
 
 const ProductCard = ({
   category,
@@ -28,7 +28,7 @@ const ProductCard = ({
 
     <div className="product-card__image-container">
       <ProductCardMenu visible={isSettingsMenuVisible} id={id} />
-      {/* <img className="product-card__image" src={img} alt={name} /> */}
+      <img className="product-card__image" src={img} alt={name} />
     </div>
 
     <p className="product-card__product-name">{name}</p>
