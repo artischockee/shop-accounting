@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import './index.sass';
 import rootReducer from './reducers';
-import { closeCurrentDialog } from './actions';
+import { closeCurrentDialog, addAsyncLoadedImage } from './actions';
 import App from './containers/App';
 
 const store = createStore(rootReducer);
@@ -31,4 +31,11 @@ document.addEventListener('keyup', (event) => {
   ) {
     store.dispatch(closeCurrentDialog());
   }
+});
+
+store.getState().products.forEach((product) => {
+  fetch('https://picsum.photos/g/192/?random')
+    .then(response => {
+      store.dispatch(addAsyncLoadedImage(product.id, response.url));
+    });
 });
