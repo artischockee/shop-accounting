@@ -1,5 +1,8 @@
 # Shop accounting
 This is the test task
+
+![App](screenshots/screenshot.png)
+
 ## Used stack
 - React.js / Redux
 - Redux-form
