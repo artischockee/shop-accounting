@@ -89,6 +89,15 @@ const products = (state = initialState, action) => {
             }
           : product
       );
+    case 'ADD_ASYNC_IMG_PRODUCT':
+      return state.map((product) =>
+        product.id === action.productId
+          ? {
+              ...product,
+              img: action.imgUrl
+            }
+          : product
+      );
     default:
       return state;
   }
